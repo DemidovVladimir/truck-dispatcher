@@ -24,7 +24,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.meanstudio.truckdispatcher"
+      "bundleIdentifier": "com.enveti.truckdispatcher",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBkrP66sCfhNd5-2qnZA5vvqyuwLxLsr3Y"
+      },
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "comgooglemaps",
+          "citymapper",
+          "uber",
+          "lyft",
+          "waze"
+        ]
+      }
     }
   }
 }

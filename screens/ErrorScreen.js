@@ -1,25 +1,15 @@
 import React from "react";
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-import QRCode from 'react-native-qrcode';
 
-import { MonoText } from "../components/StyledText";
-
-export default class HomeScreen extends React.Component {
+export default class ErrorScreen extends React.Component {
   static navigationOptions = {
     header: null
-  };
-
-  state = {
-    text: 'Sveta - konfeta',
   };
 
   render() {
@@ -30,41 +20,16 @@ export default class HomeScreen extends React.Component {
           contentContainerStyle={styles.contentContainer}
         >
           <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require("../assets/images/logo.jpg")
-                  : require("../assets/images/robot-prod.png")
-              }
-              style={styles.welcomeImage}
-            />
+              <Text style={styles.getStartedText}>You are not registered with our service</Text>
           </View>
 
           <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Please Scan QR code</Text>
-
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-            >
-              <QRCode
-                value={this.state.text}
-                size={200}
-                bgColor="purple"
-                fgColor="white"
-              />
-            </View>
+              <Text style={styles.getStartedText}>You can do that calling us:</Text>
           </View>
         </ScrollView>
       </View>
     );
   }
-
-  // _handleLearnMorePress = () => {
-    // WebBrowser.openBrowserAsync(
-      // "https://docs.expo.io/versions/latest/guides/development-mode"
-    // );
-  // };
-
 }
 
 const styles = StyleSheet.create({

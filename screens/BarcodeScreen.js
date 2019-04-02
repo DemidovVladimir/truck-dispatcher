@@ -27,19 +27,9 @@ class BarcodeScreen extends React.Component {
         <View style={{ flex: 1 }}>
           <View style={{ flex: 2 }}>
             <BarCodeScanner
-              onBarCodeScanned={({type, data}) => this.props.scanCode(data)}
+              onBarCodeScanned={({data}) => this.props.scanCode(data)}
               style={StyleSheet.absoluteFill}
             />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 18, marginBottom: 10, color: "black" }}>
-              {this.props.barcode.qrCodeData}
-            </Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 18, marginBottom: 10, color: "black" }}>
-              {this.props.barcode.scanned && 'TRUE'}
-            </Text>
           </View>
         </View>
       );
@@ -50,7 +40,7 @@ class BarcodeScreen extends React.Component {
 const mapStateToProps = (state) => {
   const { barcode } = state;
   return { barcode };
-}
+};
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
@@ -58,6 +48,6 @@ const mapDispatchToProps = dispatch => (
     scanCodeSuccess,
     scanCodeFailure
   }, dispatch)
-)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarcodeScreen);

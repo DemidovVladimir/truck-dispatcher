@@ -1,6 +1,8 @@
 import { combineEpics } from 'redux-observable';
-import { scanCodeEpic } from './epics/BarcodeEpics';
+import { scanCodeEpic, scanCodeSuccessEpic, scanCodeFailFeedbackEpic } from './epics/BarcodeEpics';
 
 export default combineEpics(
     scanCodeEpic,
+    scanCodeSuccessEpic,
+    scanCodeFailFeedbackEpic
 );
