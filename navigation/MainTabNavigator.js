@@ -1,19 +1,17 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import BarcodeScreen from '../screens/BarcodeScreen';
+import MapScreen from '../screens/MapScreen';
+import ErrorScreen from "../screens/ErrorScreen";
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+const ErrorStack = createStackNavigator({
+  Error: ErrorScreen,
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+ErrorStack.navigationOptions = {
+  tabBarLabel: 'Error',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -28,7 +26,7 @@ HomeStack.navigationOptions = {
 
 const BarcodeStack = createStackNavigator({
   ScanBarcode: BarcodeScreen
-})
+});
 
 BarcodeStack.navigationOptions = {
   tabBarLabel: 'Scan QR code',
@@ -42,39 +40,28 @@ BarcodeStack.navigationOptions = {
       }
     />
   )
-}
-
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const MapStack = createStackNavigator({
+  Map: MapScreen
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+MapStack.navigationOptions = {
+  tabBarLabel: 'Select an order',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      focused = {focused}
+      name = {
+        Platform.OS === 'ios'
+          ? 'ios-map'
+          : 'md-information-circle'
+      }
     />
-  ),
+  )
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
-  BarcodeStack
+  BarcodeStack,
+  MapStack,
+  ErrorStack
 });

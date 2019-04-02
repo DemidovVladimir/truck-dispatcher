@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { SCAN_CODE, SCAN_CODE_SUCCESS, SCAN_CODE_FAILURE } from '../actions/barcodeActions';
 
 const INITIAL_STATE = {
@@ -6,7 +5,7 @@ const INITIAL_STATE = {
     scanned: false
 }
 
-const barcodeReducer = (state = INITIAL_STATE, action) => {
+export default barcodeReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SCAN_CODE:
             return {...state, qrCodeData: action.payload}
@@ -18,7 +17,3 @@ const barcodeReducer = (state = INITIAL_STATE, action) => {
             return state
     }
 }
-
-export default combineReducers({
-    barcode: barcodeReducer,
-})
